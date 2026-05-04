@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeft, Maximize2 } from 'lucide-react';
 import { getArtifact, getArtifactOccurrences } from '../content';
 import { FADE_IN_VARIANTS } from '../constants';
+import { withBase } from '../lib/base';
 import { getImageTitleForIndex, toSimplifiedLite } from '../lib/utils';
 import Lightbox from '../components/Lightbox';
 
@@ -22,9 +23,9 @@ const CollectionDetail = () => {
   const mainImage =
     art?.imageUrls?.[safeIndex] ??
     art?.imageUrls?.[0] ??
-    '/import/picture0.png';
+    withBase('/import/picture0.png');
 
-  const urls = art?.imageUrls?.length ? art.imageUrls : ['/import/picture0.png'];
+  const urls = art?.imageUrls?.length ? art.imageUrls : [withBase('/import/picture0.png')];
   const displayTitle = art
     ? getImageTitleForIndex(art.title, safeIndex, art.imageUrls?.length ?? 1) || art.title
     : '';

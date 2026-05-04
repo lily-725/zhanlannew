@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { getArtifactCards } from '../content';
 import { FADE_IN_VARIANTS } from '../constants';
+import { withBase } from '../lib/base';
  
 
 const Collections = () => {
@@ -50,7 +51,7 @@ const Collections = () => {
               className="block relative aspect-square overflow-hidden bg-brand-soft-grey group shadow-sm"
             >
               <img 
-                src={url ?? '/import/picture0.png'} 
+                src={url ?? withBase('/import/picture0.png')} 
                 alt={displayTitle || art.title} 
                 className="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-1000" 
               />

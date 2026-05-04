@@ -2,6 +2,7 @@ import type { Artifact, Exhibition } from '../../types';
 import { artifacts as rawArtifacts, exhibitions as rawExhibitions } from './raw';
 import { toSimplifiedLite } from '../text/toSimplifiedLite';
 import { getImageTitleForIndex } from '../text/imageTitle';
+import { withBase } from '../../lib/base';
 
 // ---- Canonical stores (normalized in memory) ----
 
@@ -10,7 +11,8 @@ const artifactById = new Map<string, Artifact>(
 );
 
 function ensureImageUrls(a: Artifact): string[] {
-  return a.imageUrls?.length ? a.imageUrls : ['/import/picture0.png'];
+  const urls = a.imageUrls?.length ? a.imageUrls : ['/import/picture0.png'];
+  return urls.map((url) => withBase(url));
 }
 
 /**

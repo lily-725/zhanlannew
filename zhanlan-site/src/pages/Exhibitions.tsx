@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { exhibitions } from '../content';
 import { FADE_IN_VARIANTS } from '../constants';
+import { withBase } from '../lib/base';
 import { toSimplifiedLite } from '../lib/utils';
 
 const Exhibitions = () => (
@@ -34,7 +35,7 @@ const Exhibitions = () => (
             <div className="flex flex-col md:flex-row gap-10 md:gap-24 items-start">
               <div className="w-full md:w-1/3 aspect-[4/3] overflow-hidden bg-brand-soft-grey relative">
                 <img 
-                  src={ex.units[0]?.artifacts[0]?.imageUrls?.[0] ?? '/import/picture0.png'} 
+                  src={ex.units[0]?.artifacts[0]?.imageUrls?.[0] ?? withBase('/import/picture0.png')} 
                   alt={toSimplifiedLite(ex.title)} 
                   className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-1000"
                 />

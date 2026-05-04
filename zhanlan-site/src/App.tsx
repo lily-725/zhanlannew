@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+import { appBase } from './lib/base';
 
 // 导入模块化后的页面组件
 import Home from './pages/Home';
@@ -20,7 +21,7 @@ import Team from './pages/Team';
  */
 function App() {
   return (
-    <Router>
+    <Router basename={appBase}>
       <ScrollToTop />
       <Layout>
         <Routes>

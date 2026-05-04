@@ -4,6 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { exhibitions } from '../content';
 import { FADE_IN_VARIANTS } from '../constants';
+import { withBase } from '../lib/base';
 import { getImageTitleForIndex, toSimplifiedLite } from '../lib/utils';
 
 type GroupedImage = {
@@ -57,7 +58,7 @@ const ArticleDetail = () => {
 
     for (const art of unit.artifacts) {
       const key = normalizeDescription(art.description);
-      const imgs = (art.imageUrls?.length ? art.imageUrls : ['/import/picture0.png']).slice(0, 6);
+      const imgs = (art.imageUrls?.length ? art.imageUrls : [withBase('/import/picture0.png')]).slice(0, 6);
       const imageItems: GroupedImage[] = imgs.map((src, imageIndex) => ({
         artId: art.id,
         src,
